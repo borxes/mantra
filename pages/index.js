@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EtherMantras from '../ethereum/ethermantra';
 import { Card, Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
+import Mantra from '../components/Mantra';
 import { Link } from '../routes';
 
 class MantraIndex extends Component {
@@ -21,20 +22,19 @@ class MantraIndex extends Component {
   }
 
   renderMantras() {
-    const items = this.props.mantras.map(mantra => {
-      return {
-        header: mantra.description,
-        description: (
-          <Link route={`/mantras/${mantra.key}`}>
-            <a>View Campaign</a>
-          </Link>
-        ),
-        karmaPerHour: mantra.karmaPerHour,
-        fluid: true
-      };
-    });
-
-    return <Card.Group items={items} />;
+    return (
+      <Card.Group>
+        {this.props.mantras.map(mantra => {
+          return (
+            <Mantra
+              description={mantra.description}
+              karmaPerHour={mantra.karmaPerHour}
+              key={mantra.key}
+            />
+          );
+        })}
+      </Card.Group>
+    );
   }
 
   render() {
