@@ -30,6 +30,7 @@ class MantraIndex extends Component {
               description={mantra.description}
               karmaPerHour={mantra.karmaPerHour}
               key={mantra.key}
+              mkey={mantra.key}
             />
           );
         })}
