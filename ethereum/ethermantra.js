@@ -3,7 +3,7 @@ import EtherMantra from './build/EtherMantra.json';
 
 const instance = new web3.eth.Contract(
   JSON.parse(EtherMantra.interface),
-  '0x7c917F1400f05c03882c5FAB5Eb9622c659E48F5'
+  '0x25f41f0b3327a3818b7c09a0f551feaf9603aad2'
 );
 
 export default instance;

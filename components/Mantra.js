@@ -6,20 +6,19 @@ import EtherMantras from '../ethereum/ethermantra';
 // receives description, mkey, KPH as props
 class Mantra extends Component {
   state = {
-    errorMessage: '',
     loading: false
   };
 
   handleClick = async event => {
     event.preventDefault();
-    this.setState({ loading: true, errorMessage: '' });
+    this.setState({ loading: true });
     try {
       const accounts = await web3.eth.getAccounts();
       await EtherMantras.methods
         .receiveMantra(this.props.mkey)
         .send({ from: accounts[0] });
     } catch (err) {
-      this.setState({ errorMessage: err.message });
+      this.props.errHandler(err.message);
     }
 
     this.setState({ loading: false });
@@ -31,13 +30,12 @@ class Mantra extends Component {
       <Card>
         <Card.Content>
           <Card.Header>{this.props.description}</Card.Header>
-          <Card.Meta>{`${this.props.karmaPerHour} karma per hour`}</Card.Meta>
+          <Card.Meta>{`${this.props.karmaPerBlock} karma per block`}</Card.Meta>
           <Image src="/static/ommanipadmehum.png" />
         </Card.Content>
         <Card.Content extra>
           <Button
             primary
-            color="green"
             loading={this.state.loading}
             onClick={this.handleClick}
           >
