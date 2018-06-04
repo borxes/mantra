@@ -21,6 +21,8 @@ class MantraIndex extends Component {
     return { mantras, mantrasCount };
   }
 
+  // key and mkey are two separate props because react requires the key prop but doesn't
+  // expose it to the component
   renderMantras() {
     return (
       <Card.Group>

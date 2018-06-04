@@ -1,11 +1,7 @@
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const provider = require('./hdwallet');
+
 const Web3 = require('web3');
 const compiledFactory = require('./build/EtherMantra.json');
-
-const provider = new HDWalletProvider(
-  'act subway web coffee winter salt figure glare spell tiny logic garbage',
-  'https://rinkeby.infura.io/Pq2Cs0fzWOYtGqDbHcsP'
-);
 
 const web3 = new Web3(provider);
 

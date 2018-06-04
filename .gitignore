@@ -8,6 +8,10 @@ yarn-error.log*
 # Mac
 .DS_Store
 
+# Private
+random.md
+ethereum/hdwallet.js
+
 # Runtime data
 pids
 *.pid
