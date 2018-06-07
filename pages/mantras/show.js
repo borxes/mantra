@@ -12,7 +12,6 @@ class MantrasShow extends Component {
 
   static async getInitialProps(props) {
     const accounts = await web3.eth.getAccounts();
-    console.log(accounts[0]);
     const mantrasCount = await EtherMantras.methods.getMantrasNumber().call();
 
     const allMantras = await Promise.all(
@@ -28,11 +27,7 @@ class MantrasShow extends Component {
       const owner = await EtherMantras.methods
         .mantraOwner(allMantras[i].key)
         .call();
-      console.log(
-        `owner=${owner} acc=${accounts[0]} pushing=${owner == accounts[0]}`
-      );
       if (owner == accounts[0]) {
-        console.log('pushing some shit');
         mantras.push(allMantras[i]);
       }
     }
