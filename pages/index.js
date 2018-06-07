@@ -6,7 +6,7 @@ import Mantra from '../components/Mantra';
 import KarmaPoints from '../components/KarmaPoints';
 import { Link } from '../routes';
 
-class MantraIndex extends Component {
+class MainPage extends Component {
   state = {
     errorMessage: ''
   };
@@ -65,4 +65,4 @@ class MantraIndex extends Component {
   }
 }
 
-export default MantraIndex;
+export default MainPage;

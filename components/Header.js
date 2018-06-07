@@ -16,7 +16,7 @@ export default () => {
         <KarmaPoints />
       </Menu.Item>
       <Menu.Item position="right">
-        <Link route="/">
+        <Link route="/mantras/show">
           <a className="item">My Mantras</a>
         </Link>
         {/*
