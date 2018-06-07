@@ -3,11 +3,38 @@ import { Card, Button, Image } from 'semantic-ui-react';
 import web3 from '../ethereum/web3';
 import EtherMantras from '../ethereum/ethermantra';
 
+const MANTRA_INTERVAL = 10000;
+
 // receives description, mkey, KPH as props
 class Mantra extends Component {
   state = {
-    loading: false
+    loading: false,
+    owned: false
   };
+
+  componentDidMount() {
+    this.setOwned();
+    this.interval = setInterval(() => this.setOwned(), MANTRA_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  async setOwned() {
+    let owned = false;
+    let message = '';
+    try {
+      const accounts = await web3.eth.getAccounts();
+      const owner = await EtherMantras.methods
+        .mantraOwner(this.props.mkey)
+        .call();
+      owned = owner == accounts[0];
+    } catch (err) {
+      this.props.errHandler(err.message);
+    }
+    this.setState({ owned });
+  }
 
   handleClick = async event => {
     event.preventDefault();
@@ -25,7 +52,13 @@ class Mantra extends Component {
   };
 
   render() {
-    console.log(this.props);
+    const button = this.state.owned ? (
+      <Button disabled>Get this Mantra</Button>
+    ) : (
+      <Button primary loading={this.state.loading} onClick={this.handleClick}>
+        Get this Mantra
+      </Button>
+    );
     return (
       <Card>
         <Card.Content>
@@ -33,15 +66,7 @@ class Mantra extends Component {
           <Card.Meta>{`${this.props.karmaPerBlock} karma per block`}</Card.Meta>
           <Image src="/static/ommanipadmehum.png" />
         </Card.Content>
-        <Card.Content extra>
-          <Button
-            primary
-            loading={this.state.loading}
-            onClick={this.handleClick}
-          >
-            Get this Mantra
-          </Button>
-        </Card.Content>
+        <Card.Content extra>{button}</Card.Content>
       </Card>
     );
   }

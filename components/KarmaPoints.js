@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import web3 from '../ethereum/web3';
 import EtherMantras from '../ethereum/ethermantra';
 
-const KARMA_INTERVAL = 30000;
+const KARMA_INTERVAL = 10000;
 
 class KarmaPoints extends Component {
   state = {
