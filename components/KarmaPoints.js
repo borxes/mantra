@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import web3 from '../ethereum/web3';
 import EtherMantras from '../ethereum/ethermantra';
 
+const KARMA_INTERVAL = 30000;
+
 class KarmaPoints extends Component {
   state = {
     points: 0
   };
 
-  async componentDidMount() {
-    // calculate points
-    // await ...
+  setKarmaPoints = async () => {
     let points = 0;
     try {
       const accounts = await web3.eth.getAccounts();
@@ -19,6 +19,15 @@ class KarmaPoints extends Component {
     }
 
     this.setState({ points: points });
+  };
+
+  async componentDidMount() {
+    this.setKarmaPoints();
+    this.interval = setInterval(() => this.setKarmaPoints(), KARMA_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
