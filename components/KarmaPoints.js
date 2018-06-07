@@ -31,7 +31,11 @@ class KarmaPoints extends Component {
   }
 
   render() {
-    return <div>You've earned {this.state.points} Karma Points!!!</div>;
+    return (
+      <div className="KarmaPoints">
+        <strong>You've earned {this.state.points} Karma Points!</strong>
+      </div>
+    );
   }
 }
 

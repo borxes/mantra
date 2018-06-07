@@ -54,7 +54,6 @@ class MantraIndex extends Component {
     return (
       <Layout>
         <div>
-          <KarmaPoints />
           <h3>Mantras</h3>
           {this.renderMantras()}
           {this.state.errorMessage && (

@@ -11,6 +11,7 @@ export default props => {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css"
         />
+        <link rel="stylesheet" href="/static/mantra.css" />
       </Head>
       <Header />
       {props.children}
