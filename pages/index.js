@@ -3,8 +3,6 @@ import EtherMantras from '../ethereum/ethermantra';
 import { Card, Button, Message } from 'semantic-ui-react';
 import Layout from '../components/Layout';
 import Mantra from '../components/Mantra';
-import KarmaPoints from '../components/KarmaPoints';
-import { Link } from '../routes';
 
 class MainPage extends Component {
   state = {
