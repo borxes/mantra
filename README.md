@@ -1,5 +1,5 @@
 # mantra
-Dapp MVP
+Dapp MVP - deployed at (https://mighty-island-93627.herokuapp.com)[https://mighty-island-93627.herokuapp.com]
 
 ### stage 1
 
